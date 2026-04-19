@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klukva Games | О нас</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i> Klukva Games
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h1 class="section-title">О команде Klukva Games</h1>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Мы — инди-студия из России</h2>
+                        <p>Klukva Games основана в 2020 году группой энтузиастов, которые хотели создавать уникальные игровые миры. За 5 лет мы выпустили 6 проектов, получивших положительные отзывы на itch.io и Steam.</p>
+                        <p>Наша миссия — доказывать, что интересные игры можно делать без многомиллионных бюджетов, уделяя внимание геймплею и креативу. Мы открыты к сотрудничеству с художниками, программистами и сценаристами.</p>
+                        <div class="team-values">
+                            <div class="value">
+                                <i class="fas fa-code"></i>
+                                <span>Чистый код и ECS</span>
+                            </div>
+                            <div class="value">
+                                <i class="fas fa-palette"></i>
+                                <span>Атмосферный арт</span>
+                            </div>
+                            <div class="value">
+                                <i class="fas fa-headset"></i>
+                                <span>Иммерсивный саунд-дизайн</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Klukva Games. Все права защищены.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.querySelector('.mobile-menu');
+        const navUl = document.querySelector('nav ul');
+        menuBtn.addEventListener('click', () => {
+            navUl.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

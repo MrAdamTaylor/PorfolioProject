@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klukva Games — Отзывы</title>
+    <style>
+        /* ОСНОВНЫЕ СТИЛИ В СТИЛЕ KLUKVA GAMES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0e14;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #e3e7f2;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ШАПКА САЙТА (условная) */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+        }
+
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #a0f0ff, #4a7aff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(74, 122, 255, 0.3);
+        }
+
+        .nav-links span {
+            margin-left: 2rem;
+            color: #8e9bb5;
+            font-weight: 500;
+            cursor: default;
+            transition: color 0.2s;
+        }
+        .nav-links span:hover { color: #a0f0ff; }
+        .nav-links .active { color: #4a7aff; border-bottom: 2px solid #4a7aff; padding-bottom: 4px; }
+
+        /* ЗАГОЛОВОК РАЗДЕЛА */
+        .section-title {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 2.5rem;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-right: 1.5rem;
+        }
+        .section-title .glow {
+            height: 4px;
+            width: 80px;
+            background: #4a7aff;
+            box-shadow: 0 0 20px #2a5cff;
+            border-radius: 4px;
+        }
+
+        /* ОСНОВНАЯ СЕТКА ОТЗЫВОВ */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* КАРТОЧКА ОТЗЫВА */
+        .review-card {
+            background: rgba(18, 24, 34, 0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid #202a38;
+            border-radius: 24px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6);
+            transition: transform 0.25s ease, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .review-card:hover {
+            transform: translateY(-6px);
+            border-color: #3e5f9e;
+            box-shadow: 0 20px 35px -8px #00000080, 0 0 0 1px rgba(74, 122, 255, 0.1);
+        }
+
+        /* Игра (тег) */
+        .game-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a0c0ff;
+            background: #1b2536;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1.3rem;
+            border-left: 3px solid #4a7aff;
+            align-self: flex-start;
+        }
+
+        /* Текст отзыва */
+        .review-text {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #d6deef;
+            margin-bottom: 1.8rem;
+            flex: 1;
+            quotes: "“" "”" "‘" "’";
+        }
+        .review-text::before { content: "“"; font-size: 1.8rem; color: #4a7aff; margin-right: 3px; line-height: 0; vertical-align: middle; }
+        .review-text::after  { content: "”"; font-size: 1.8rem; color: #4a7aff; margin-left: 3px; line-height: 0; vertical-align: bottom; }
+
+        /* Автор и платформа */
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: auto;
+            border-top: 1px dashed #2a3548;
+            padding-top: 1.2rem;
+        }
+        .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #1f2a3c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #bdd0ff;
+            border: 1px solid #374a67;
+            text-transform: uppercase;
+        }
+        .reviewer-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .reviewer-name {
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
+        }
+        .reviewer-meta {
+            font-size: 0.8rem;
+            color: #7a8aa3;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .stars {
+            color: #ffb83d;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+        }
+        .platform {
+            background: #10161f;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #9bb1da;
+        }
+
+        /* КНОПКА ЕЩЁ ОТЗЫВОВ */
+        .more-reviews {
+            margin-top: 3.5rem;
+            text-align: center;
+        }
+        .btn {
+            background: transparent;
+            border: 1.5px solid #2e456e;
+            color: #c6ddff;
+            padding: 0.9rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 60px;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 10px #1a2f4e;
+            letter-spacing: 0.5px;
+        }
+        .btn:hover {
+            background: #1b2c48;
+            border-color: #4a7aff;
+            color: white;
+            box-shadow: 0 0 18px #2f5bb7;
+        }
+
+        /* АДАПТИВ */
+        @media (max-width: 900px) {
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .reviews-grid { grid-template-columns: 1fr; }
+            .site-header { flex-direction: column; align-items: start; gap: 15px; }
+            .nav-links span { margin-left: 0; margin-right: 1.5rem; }
+        }
+
+        /* ВИЗУАЛЬНЫЙ ФОН (декор) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 30% 20%, #15212e, #05080c);
+            z-index: -2;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: 0; right: 0; width: 60%; height: 60%;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg"><circle cx="700" cy="650" r="200" fill="%231a2d4a" opacity="0.2" filter="blur(60px)"/></svg>');
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка, похожая на Klukva Games -->
+        <header class="site-header">
+            <div class="logo">
+                <h1>KLUKVA GAMES</h1>
+            </div>
+            <div class="nav-links">
+                <span>Игры</span>
+                <span>Сообщество</span>
+                <span class="active">Отзывы</span>
+                <span>Поддержка</span>
+            </div>
+        </header>
+
+        <!-- РАЗДЕЛ REVIEWS -->
+        <div class="section-title">
+            <h2>Отзывы игроков</h2>
+            <div class="glow"></div>
+        </div>
+
+        <!-- СЕТКА ОТЗЫВОВ (все игры Klukva Games упомянуты) -->
+        <div class="reviews-grid">
+            
+            <!-- 1. Top-Down Shooter -->
+            <div class="review-card">
+                <span class="game-badge">🔥 Top‑Down Shooter</span>
+                <div class="review-text">
+                    Процедурные подземелья просто огонь! Каждый забег уникален, прокачка оружия затягивает. Боссы жёсткие, но справедливые. Идеальный штурмовик с видом сверху.
+                </div>
+                <div class="reviewer">
+                    <div class="avatar">АК</div>
+                    <div class="reviewer-info">
+                        <span class="reviewer-name">Артём К.</span>
+                        <div class="reviewer-meta">
+                            <span class="stars">★★★★★</span>
+                            <span class="platform">Steam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2. RTS: Steel Conflict -->
+            <div class="review-card">
+                <span class="game-badge">⚔️ RTS: Steel Conflict</span>
+                <div class="review-text">
+                    Юнкеры — гениальная фишка. Баланс 8 игроков держится достойно, матчи напряжённые. Лучшая RTS для вечерних баталий с друзьями.
+                </div>
+                <div class="reviewer">
+                    <div class="avatar">MS</div>
+                    <div class="reviewer-info">
+                        <span class="reviewer-name">Макс С.</span>
+                        <div class="reviewer-meta">
+                            <span class="stars">★★★★½</span>
+                            <span class="platform">Epic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Ultra-Ship Escape -->
+            <div class="review-card">
+                <span class="game-badge">🚀 Ultra‑Ship Escape</span>
+                <div class="review-text">
+                    Адреналин зашкаливает! Уклонение от астероидов и турелей на огромной скорости — это чистый кайф. Визуал космоса шикарен.
+                </div>
+                <div class="reviewer">
+                    <div class="avatar">EN</div>
+                    <div class="reviewer-info">
+                        <span class="reviewer-name">Елена Н.</span>
+                        <div class="reviewer-meta">
+                            <span class="stars">★★★★★</span>
+                            <span class="platform">Steam Deck</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. RocketLaunch (симулятор) -->
+            <div class="review-card">
+                <span class="game-badge">🛰️ RocketLaunch</span>
+                <div class="review-text">
+                    Самая реалистичная физика из простых симуляторов. Первый выход на орбиту — непередаваемое чувство. Для гиков и любителей космоса.
+                </div>
+                <div class="reviewer">
+                    <div class="avatar">ИП</div>
+                    <div class="reviewer-info">
+                        <span class="reviewer-name">Игорь П.</span>
+                        <div class="reviewer-meta">
+                            <span class="stars">★★★★★</span>
+                            <span class="platform">itch.io</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 2D RPG: Echoes of ECS -->
+            <div class="review-card">
+                <span class="game-badge">✨ Echoes of ECS</span>
+                <div class="review-text">
+                    ECS-архитектура даёт невероятно плавный геймплей даже с кучей монстров. Процедурный мир интересно исследовать, билды разнообразные.
+                </div>
+                <div class="reviewer">
+                    <div class="avatar">ДВ</div>
+                    <div class="reviewer-info">
+                        <span class="reviewer-name">Дима В.</span>
+                        <div class="reviewer-meta">
+                            <span class="stars">★★★★¾</span>
+                            <span class="platform">Steam</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Mystery Island -->
+            <div class="review-card">
+                <span class="game-badge">🏝️ Mystery Island</span>
+                <div class="review-text">
+                    Атмосфера тайны и выживания — выше всяких похвал. Квесты заставляют думать, а встречи с существами оставляют след. Жду продолжения!
+                </div>
+                <div class="reviewer">
+                    <div class="avatar">АС</div>
+                    <div class="reviewer-info">
+                        <span class="reviewer-name">Алиса С.</span>
+                        <div class="reviewer-meta">
+                            <span class="stars">★★★★★</span>
+                            <span class="platform">GOG</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ДОПОЛНИТЕЛЬНЫЙ БЛОК С КНОПКОЙ (можно добавить ещё отзывы) -->
+        <div class="more-reviews">
+            <button class="btn">+ Загрузить ещё отзывы</button>
+            <p style="margin-top: 1.2rem; opacity: 0.6; font-size: 0.9rem;">Более 2,400 отзывов от сообщества Klukva Games</p>
+        </div>
+        
+        <!-- Небольшой микротекст, что раздел именно для сайта Klukva Games -->
+        <div style="margin-top: 3rem; text-align: right; border-top: 1px solid #1e2a3c; padding-top: 1.2rem; color: #596f8c; font-size: 0.8rem;">
+            © Klukva Games — раздел «Reviews»
+        </div>
+    </div>
+</body>
+</html>

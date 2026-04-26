@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klukva Games | Команда разработчиков</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Дополнительные стили для карточек участников */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .team-card {
+            background-color: #150734;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .team-avatar {
+            font-size: 4rem;
+            color: #FFA500;
+            margin-bottom: 1rem;
+        }
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            color: #FFA500;
+        }
+        .team-role {
+            font-weight: 600;
+            color: #aaa;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .team-desc {
+            color: #ddd;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .team-social {
+            margin-top: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .team-social a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .team-social a:hover {
+            color: #FFA500;
+        }
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i> Klukva Games
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="command" style="padding: 80px 0;">
+            <div class="container">
+                <h1 class="section-title">Наша команда</h1>
+                <p class="section-subtitle">Люди, которые создают уникальные игровые миры</p>
+
+                <div class="team-grid">
+                    <!-- Участник 1 -->
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                        <h3>Алексей Соколов</h3>
+                        <div class="team-role">Геймдизайнер & Основатель</div>
+                        <div class="team-desc">
+                            Генератор идей и архитектор игровых механик. Более 7 лет в инди-разработке, обожает roguelike и нелинейные сценарии.
+                        </div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Участник 2 -->
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Мария Волкова</h3>
+                        <div class="team-role">Ведущий художник</div>
+                        <div class="team-desc">
+                            Создаёт атмосферу через пиксель-арт и 2D-иллюстрации. Её работы вдохновлены ретро-играми и сюрреализмом.
+                        </div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-artstation"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Участник 3 -->
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Дмитрий Клюев</h3>
+                        <div class="team-role">Tech Lead / Программист</div>
+                        <div class="team-desc">
+                            Мастер ECS-архитектур и оптимизации. Пишет чистый код, который работает на слабых устройствах без потери качества.
+                        </div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Участник 4 -->
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-head-side-vr"></i>
+                        </div>
+                        <h3>Анна Морозова</h3>
+                        <div class="team-role">Саунд-дизайнер</div>
+                        <div class="team-desc">
+                            Создаёт иммерсивные звуковые ландшафты. Лауреат конкурса «Звук в играх» 2024, мастер атмосферных эмбиентов.
+                        </div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-soundcloud"></i></a>
+                            <a href="#"><i class="fas fa-music"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Участник 5 -->
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Игорь Петров</h3>
+                        <div class="team-role">Продюсер & Маркетолог</div>
+                        <div class="team-desc">
+                            Организует процессы, ищет партнёров и выводит проекты на Steam, itch.io. Умеет делать из инди-игр хиты.
+                        </div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Участник 6 -->
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Елена Кравцова</h3>
+                        <div class="team-role">UI/UX дизайнер</div>
+                        <div class="team-desc">
+                            Проектирует удобные и красивые интерфейсы. Занимается адаптацией игр под мобильные устройства и геймпад.
+                        </div>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Klukva Games. Все права защищены.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.querySelector('.mobile-menu');
+        const navUl = document.querySelector('nav ul');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                navUl.classList.toggle('show');
+            });
+        }
+    </script>
+</body>
+</html>

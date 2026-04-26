@@ -442,3 +442,48 @@ footer .container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+   .history-container {
+    position: relative;
+    /* 1. Устанавливаем отступ от линии до текста */
+    padding-left: 30px; 
+    margin-left: 20px;
+    font-family: sans-serif;
+  }
+
+  .history-container::before {
+    content: "";
+    position: absolute;
+    /* 2. Линия стоит в нулевой точке */
+    left: 0;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background-color: #e0e0e0;
+  }
+
+  .history-item {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .history-item::before {
+    content: "";
+    position: absolute;
+    /* 3. Двигаем точку влево ровно на столько же, сколько padding у контейнера */
+    left: -30px; 
+    /* 4. Центрируем саму точку относительно линии */
+    transform: translateX(-50%);
+    
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: #1a2a3a;
+    border: 2px solid white;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  
+  .history-item:last-child::after {
+    display: none;
+  }

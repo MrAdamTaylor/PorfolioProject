@@ -2,24 +2,313 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klukva Games | Портфолио</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>✨ Klukva Games | Портфолио ✨</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #0a0f1f, #03050b);
+            color: #eef5ff;
+            line-height: 1.5;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* —— главная разноцветная РАМКА с анимацией —— */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            pointer-events: none;
+            z-index: 999;
+            border-radius: 32px;
+            background: linear-gradient(135deg, #ff66cc, #ffcc33, #33ffcc, #3399ff, #ff66cc);
+            background-size: 300% 300%;
+            animation: borderWave 8s ease infinite;
+            padding: 3px;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        @keyframes borderWave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* внутренний контент с лёгким отступом от рамки */
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(3, 5, 12, 0.65);
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* хедер — стеклянный + цветной акцент */
+        header {
+            background: rgba(15, 20, 35, 0.7);
+            backdrop-filter: blur(14px);
+            border-bottom: 2px solid rgba(255, 100, 200, 0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #FFD966, #FF6B8B, #A569FF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo i {
+            background: none;
+            -webkit-background-clip: unset;
+            color: #ffaa66;
+            margin-right: 8px;
+            text-shadow: 0 0 5px #ff9f4a;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #cfdeff;
+            transition: 0.2s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: #FFB347;
+            border-bottom-color: #FFB347;
+            text-shadow: 0 0 4px #ffb34780;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #FFB347;
+        }
+
+        /* секции */
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(145deg, #FFF5C4, #FFC371);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #b9c8ff;
+            margin-bottom: 3rem;
+            border-left: 3px solid #ff9f4a;
+            border-right: 3px solid #ff9f4a;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* сетка с цветными карточками + эффекты */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 2rem;
+            padding: 20px 0 60px;
+        }
+
+        .game-card {
+            background: rgba(18, 22, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 215, 120, 0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            cursor: default;
+        }
+
+        .game-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: #FFB347;
+            box-shadow: 0 25px 40px rgba(255, 160, 60, 0.3);
+        }
+
+        .card-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            transition: 0.3s;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-img i {
+            filter: drop-shadow(0 0 12px rgba(0,0,0,0.6));
+            transition: 0.3s;
+        }
+        .game-card:hover .card-img i {
+            transform: scale(1.1) rotate(4deg);
+            filter: drop-shadow(0 0 16px gold);
+        }
+
+        .card-content {
+            padding: 1.6rem;
+        }
+        .card-content h3 {
+            font-size: 1.7rem;
+            margin-bottom: 0.6rem;
+            background: linear-gradient(135deg, #ffe6b3, #ffad60);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        .card-content p {
+            color: #cfdeff;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* футер с соцсетями */
+        footer {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255, 200, 100, 0.4);
+            margin-top: 20px;
+            padding: 30px 0;
+            text-align: center;
+        }
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        footer p {
+            color: #bcceff;
+        }
+        .social a {
+            color: #ffcd94;
+            font-size: 1.7rem;
+            margin-left: 20px;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .social a:hover {
+            color: #ff8c42;
+            transform: translateY(-3px);
+        }
+
+        /* медиа-запросы */
+        @media (max-width: 800px) {
+            .container { padding: 0 20px; }
+            .section-title { font-size: 2.5rem; }
+            .mobile-menu { display: block; }
+            nav ul {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 12, 30, 0.96);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-200%);
+                transition: 0.3s;
+                z-index: 200;
+                border-radius: 0 0 32px 32px;
+                border-bottom: 2px solid #ffb347;
+            }
+            nav ul.show {
+                transform: translateY(0);
+            }
+            footer .container {
+                flex-direction: column;
+            }
+        }
+
+        /* декоративные блестки */
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .glow-text {
+            text-shadow: 0 0 6px #ffaa66;
+        }
+        button, .game-card {
+            transition: all 0.25s;
+        }
+    </style>
 </head>
 <body>
+<div class="wrapper">
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-gamepad"></i> Klukva Games
+                <i class="fas fa-gamepad"></i> Клюквенные игры ёу!
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="portfolio.html" class="active">🎮 Portfolio</a></li>
+                    <li><a href="contact.html">📞 Contact</a></li>
+                    <li><a href="about.html">🍷 About Us</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu">
@@ -31,67 +320,67 @@
     <main>
         <section id="portfolio">
             <div class="container">
-                <h1 class="section-title">Наши игры</h1>
-                <p class="section-subtitle">6 проектов, в которые мы вложили душу</p>
+                <h1 class="section-title"><i class="fas fa-crown" style="color:#FFD966;"></i> Наши игры <i class="fas fa-crown" style="color:#FFD966;"></i></h1>
+                <p class="section-subtitle">✨ 6   проектов, в  которые   мы   вложили   душу ✨</p>
                 <div class="portfolio-grid">
-                    <!-- Карточка 1: Top-Down-Shooter -->
+                    <!-- Карточка 1: Top-Down-Shooter  с агрессивным градиентом -->
                     <div class="game-card">
-                        <div class="card-img" style="background: linear-gradient(135deg, #1e1a2f, #2a1e3c);">
-                            <i class="fas fa-crosshairs"></i>
+                        <div class="card-img" style="background: radial-gradient(circle at 20% 30%, #ff4d6d, #3c096c);">
+                            <i class="fas fa-crosshairs" style="color:#fff2b5;"></i>
                         </div>
                         <div class="card-content">
-                            <h3>Top-Down-Shooter</h3>
-                            <p>Динамичный шутер с видом сверху. Уничтожай орды врагов, прокачивай оружие и сражайся с боссами в процедурно генерируемых подземельях.</p>
+                            <h3>🔫 Top-Down-Shooter</h3>
+                            <p>Динамичный шутер с видом сверху. Уничтожай орды врагов, прокачивай оружие и сражайся с боссами в процедурно генерируемых подземельях. Ощути драйв!</p>
                         </div>
                     </div>
-                    <!-- Карточка 2: RTS -->
+                    <!-- Карточка 2: RTS — цвет стали и золота -->
                     <div class="game-card">
-                        <div class="card-img" style="background: linear-gradient(135deg, #0f2b2d, #1a3a3a);">
-                            <i class="fas fa-city"></i>
+                        <div class="card-img" style="background: radial-gradient(circle at 70% 20%, #1f6d49, #0a2f2a);">
+                            <i class="fas fa-city" style="color:#ffd966;"></i>
                         </div>
                         <div class="card-content">
-                            <h3>RTS: Steel Conflict</h3>
-                            <p>Многопользовательская стратегия в реальном времени. Строй базу, создавай уникальных юнитов и сражайся с другими игроками по сети до 8 человек.</p>
+                            <h3>🏭 RTS: Steel Conflict</h3>
+                            <p>Многопользовательская стратегия в реальном времени. Строй базу, создавай уникальных юнитов и сражайся с другими игроками по сети до 8 человек. Тактика решает всё!</p>
                         </div>
                     </div>
-                    <!-- Карточка 3: Ultra-Ship_Escape -->
+                    <!-- Карточка 3: Ultra-Ship_Escape — космическое сияние -->
                     <div class="game-card">
-                        <div class="card-img" style="background: linear-gradient(135deg, #0a0f2a, #161c3f);">
-                            <i class="fas fa-space-shuttle"></i>
+                        <div class="card-img" style="background: radial-gradient(circle at 40% 70%, #00a6ff, #0b0f3a);">
+                            <i class="fas fa-space-shuttle" style="color:#ffe087;"></i>
                         </div>
                         <div class="card-content">
-                            <h3>Ultra-Ship Escape</h3>
-                            <p>Космический экшен. Управляй мощным кораблём, уничтожай турели и вражеские истребители, уклоняйся от астероидов в захватывающих миссиях.</p>
+                            <h3>🚀 Ultra-Ship Escape</h3>
+                            <p>Космический экшен. Управляй мощным кораблём, уничтожай турели и вражеские истребители, уклоняйся от астероидов в захватывающих миссиях. Готов к гиперпрыжку?</p>
                         </div>
                     </div>
-                    <!-- Карточка 4: RocketLaunch -->
+                    <!-- Карточка 4: RocketLaunch — огненная -->
                     <div class="game-card">
-                        <div class="card-img" style="background: linear-gradient(135deg, #2c1a1a, #3d2626);">
-                            <i class="fas fa-rocket"></i>
+                        <div class="card-img" style="background: radial-gradient(circle at 30% 50%, #c94f4f, #631a1a);">
+                            <i class="fas fa-rocket" style="color:#ffd966;"></i>
                         </div>
                         <div class="card-content">
-                            <h3>RocketLaunch</h3>
-                            <p>Симулятор запуска ракеты. Рассчитывай траекторию, управляй тягой и добейся выхода на орбиту Земли. Реалистичная физика и атмосфера.</p>
+                            <h3>🔥 RocketLaunch</h3>
+                            <p>Симулятор запуска ракеты. Рассчитывай траекторию, управляй тягой и добейся выхода на орбиту Земли. Реалистичная физика, динамическая атмосфера и риск!</p>
                         </div>
                     </div>
-                    <!-- Карточка 5: 2D RPG -->
+                    <!-- Карточка 5: 2D RPG — изумрудная глубина -->
                     <div class="game-card">
-                        <div class="card-img" style="background: linear-gradient(135deg, #1f3b2c, #2a4a38);">
-                            <i class="fas fa-dragon"></i>
+                        <div class="card-img" style="background: radial-gradient(circle at 80% 40%, #2b7a4b, #0e3822);">
+                            <i class="fas fa-dragon" style="color:#ffcf4a;"></i>
                         </div>
                         <div class="card-content">
-                            <h3>2D RPG: Echoes of ECS</h3>
-                            <p>Ролевая игра на ECS-архитектуре. Исследуй процедурный мир, сражайся с монстрами, развивай персонажа и открывай новые способности.</p>
+                            <h3>🐉 2D RPG: Echoes of ECS</h3>
+                            <p>Ролевая игра на ECS-архитектуре. Исследуй процедурный мир, сражайся с монстрами, развивай персонажа и открывай новые способности. Твоя эпопея начинается.</p>
                         </div>
                     </div>
-                    <!-- Карточка 6: Mystery Island -->
+                    <!-- Карточка 6: Mystery Island — таинственная фиолетовая магия -->
                     <div class="game-card">
-                        <div class="card-img" style="background: linear-gradient(135deg, #1a1f3a, #252b4a);">
-                            <i class="fas fa-map"></i>
+                        <div class="card-img" style="background: radial-gradient(circle at 50% 20%, #b86bff, #311b5a);">
+                            <i class="fas fa-map" style="color:#ffea9e;"></i>
                         </div>
                         <div class="card-content">
-                            <h3>Mystery Island</h3>
-                            <p>Приключенческая игра с элементами квеста и выживания. Разгадай тайны затерянного острова, строй убежище и встречай загадочных существ.</p>
+                            <h3>🗺️ Mystery Island</h3>
+                            <p>Приключенческая игра с элементами квеста и выживания. Разгадай тайны затерянного острова, строй убежище и встречай загадочных существ. Секреты ждут героя.</p>
                         </div>
                     </div>
                 </div>
@@ -101,21 +390,57 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Klukva Games. Все права защищены.</p>
+            <p>🍒 &copy; 2025 Klukva Games — все права защищены. Сделано с клюквенным вайбом 🍒</p>
             <div class="social">
-                <a href="#"><i class="fab fa-vk"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
+</div>
 
-    <script>
+<script>
+    (function() {
         const menuBtn = document.querySelector('.mobile-menu');
         const navUl = document.querySelector('nav ul');
-        menuBtn.addEventListener('click', () => {
-            navUl.classList.toggle('show');
+        if (menuBtn && navUl) {
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navUl.classList.toggle('show');
+            });
+            // Закрытие меню при клике на ссылку
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navUl.classList.remove('show');
+                });
+            });
+        }
+
+        // Добавим случайные искорки на карточки при загрузке (просто для веселья)
+        const cards = document.querySelectorAll('.game-card');
+        cards.forEach((card, idx) => {
+            card.style.setProperty('transition-delay', `${idx * 0.03}s`);
         });
-    </script>
+
+        // маленький эффект печати для субтитра
+        const subtitle = document.querySelector('.section-subtitle');
+        if(subtitle && !subtitle.hasAttribute('data-typed')) {
+            const originalText = subtitle.innerText;
+            subtitle.innerText = '';
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    subtitle.innerText += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30);
+                }
+            }
+            typeWriter();
+            subtitle.setAttribute('data-typed', 'true');
+        }
+    })();
+</script>
 </body>
-</html>
+</html

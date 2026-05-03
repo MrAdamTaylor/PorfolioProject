@@ -4,9 +4,452 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klukva Games | Контакты</title>
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #9b2c6c;        
+            --primary-light: #c74b8c;
+            --primary-dark: #5f1846;
+            --accent: #ffb347;         
+            --accent-glow: #ff9f1c;
+            --bg-dark: #0f0b13;
+            --bg-card: rgba(25, 18, 30, 0.85);
+            --border-glow: rgba(255, 180, 70, 0.3);
+            --text-light: #f3eef7;
+            --text-dim: #b5a6c9;
+            --shadow-lg: 0 20px 35px -8px rgba(0,0,0,0.5), 0 8px 12px -4px rgba(0,0,0,0.3);
+            --border-radius-card: 28px;
+            --border-radius-input: 20px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 30% 10%, #1e1428, #0c0712);
+            color: var(--text-light);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        
+        header {
+            background: rgba(18, 10, 24, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 200, 220, 0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffd6b0, #ffa7c4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 0 12px rgba(255,140,200,0.5);
+        }
+
+        .logo i {
+            color: #ff9f6e;
+            font-size: 2rem;
+            filter: drop-shadow(0 0 8px #ff8aae);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            padding: 8px 4px;
+            transition: all 0.2s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            color: white;
+            border-bottom-color: var(--accent);
+        }
+
+        nav ul li a.active {
+            color: white;
+            border-bottom: 2px solid var(--accent);
+            text-shadow: 0 0 8px rgba(255,200,100,0.5);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.9rem;
+            color: var(--text-light);
+            cursor: pointer;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,220,180,0.2);
+        }
+
+       
+        main {
+            flex: 1;
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffe6b0, #ffb8d2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 18px rgba(170, 0, 140, 0.3);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #ff7eb3);
+            margin: 16px auto 0;
+            border-radius: 20px;
+            box-shadow: 0 0 15px #ff9f6e;
+        }
+
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        
+        .contact-info {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 40px 36px;
+            border-radius: var(--border-radius-card);
+            border: 1px solid rgba(255, 200, 210, 0.25);
+            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255, 140, 200, 0.1) inset;
+            transition: transform 0.25s, box-shadow 0.3s;
+        }
+
+        .contact-info:hover {
+            box-shadow: 0 25px 40px -10px #00000080, 0 0 20px #ffa96e33;
+            border-color: rgba(255, 180, 120, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            background: linear-gradient(145deg, #fff3e0, #ffd9b3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .contact-info p {
+            color: var(--text-dim);
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--accent);
+            padding-left: 22px;
+        }
+
+        /* "Таблички" с контактами — аккуратные рамки */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 22px;
+            background: rgba(10, 5, 15, 0.4);
+            border-radius: 50px;
+            border: 1.5px solid rgba(255, 160, 160, 0.2);
+            backdrop-filter: blur(5px);
+            transition: all 0.2s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            background: rgba(30, 18, 38, 0.7);
+            box-shadow: 0 0 18px #ffb86b33, inset 0 0 5px #ffcd941a;
+            transform: scale(1.01);
+        }
+
+        .contact-item i {
+            font-size: 1.9rem;
+            width: 40px;
+            text-align: center;
+            color: var(--accent);
+            filter: drop-shadow(0 0 8px #ffb35c);
+        }
+
+        .contact-item span {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            word-break: break-all;
+        }
+
+
+        .contact-form {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 40px 36px;
+            border-radius: var(--border-radius-card);
+            border: 1px solid rgba(255, 200, 210, 0.25);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(20, 10, 25, 0.6);
+            border: 2px solid rgba(210, 160, 200, 0.2);
+            border-radius: var(--border-radius-input);
+            padding: 18px 22px;
+            font-size: 1.1rem;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 18px #ffa44b66, inset 0 2px 8px #0000004d;
+            background: #1f142b;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #a390b5;
+            font-weight: 400;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(145deg, #b83b7c, #8f2862);
+            border: none;
+            padding: 18px 28px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 12px 25px -5px #9b2c6c80, 0 0 0 2px #ffbf7e33, 0 0 15px #ffa758;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 210, 150, 0.6);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #cf4a8e, #a43372);
+            box-shadow: 0 18px 30px -6px #cf4a8e, 0 0 25px #ffb459;
+            transform: translateY(-3px);
+            border-color: #ffe2b3;
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 8px 18px #8f2862;
+        }
+
+       
+        footer {
+            background: rgba(8, 4, 12, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 180, 150, 0.2);
+            padding: 30px 0;
+            margin-top: 20px;
+        }
+
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer p {
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .social {
+            display: flex;
+            gap: 24px;
+        }
+
+        .social a {
+            color: #e2c7ff;
+            font-size: 1.7rem;
+            transition: 0.2s;
+            background: rgba(60, 30, 70, 0.3);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 200, 150, 0.25);
+            box-shadow: 0 6px 12px #00000030;
+        }
+
+        .social a:hover {
+            color: #ffcf9a;
+            background: #6d3a6b40;
+            border-color: #ffb86b;
+            box-shadow: 0 0 20px #ffa44b;
+            transform: scale(1.1);
+        }
+
+      
+        @media (max-width: 800px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: rgba(20, 10, 28, 0.95);
+                backdrop-filter: blur(20px);
+                position: absolute;
+                top: 80px;
+                left: 20px;
+                right: 20px;
+                padding: 30px;
+                border-radius: 36px;
+                border: 1px solid #ffb57733;
+                box-shadow: 0 30px 40px #00000080;
+                gap: 20px;
+                text-align: center;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .header-container {
+                padding: 12px 16px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-info, .contact-form {
+                padding: 28px 20px;
+            }
+
+            .contact-item span {
+                font-size: 1rem;
+            }
+
+            footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Декоративные акценты — игровые нотки */
+        .contact-info::before {
+            content: "🎮";
+            opacity: 0.1;
+            font-size: 120px;
+            position: absolute;
+            right: 20px;
+            bottom: 0px;
+            pointer-events: none;
+        }
+
+        .contact-info {
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -31,11 +474,12 @@
     <main>
         <section id="contact-page">
             <div class="container">
-                <h1 class="section-title">Свяжитесь с нами</h1>
+                <h1 class="section-title">Будем на связи!</h1>
                 <div class="contact-grid">
+                    
                     <div class="contact-info">
-                        <h2>Давайте создавать игры вместе</h2>
-                        <p>По любым вопросам — сотрудничество, вакансии, предложения — пишите или звоните.</p>
+                        <h2>Начните свой путь вместе с нами!</h2>
+                        <p>Сотрудничество, вакансии, предложения — ждём звонков и писем!</p>
                         <div class="contact-details">
                             <div class="contact-item">
                                 <i class="fas fa-envelope"></i>
@@ -46,17 +490,25 @@
                                 <span>+7 (999) 123-45-67</span>
                             </div>
                             <div class="contact-item">
-                                <i class="fab fa-discord"></i>
-                                <span>klukva_games</span>
+                                <i class="fab fa-telegram"></i>
+                                <span>@klukva_games</span>
                             </div>
                         </div>
+                        
+                        <div style="margin-top: 40px; font-size: 0.95rem; color: #bfaad0; border-top: 1px dashed #ffae7a55; padding-top: 22px; display: flex; gap: 12px;">
+                            <i class="fas fa-clock" style="color: var(--accent);"></i> Отвечаем в течение 2 часов
+                        </div>
                     </div>
+
+                    
                     <div class="contact-form">
                         <form action="#" method="post">
                             <input type="text" placeholder="Ваше имя" required>
-                            <input type="email" placeholder="Email" required>
-                            <textarea rows="5" placeholder="Сообщение..."></textarea>
-                            <button type="submit" class="btn btn-primary">Отправить</button>
+                            <input type="email" placeholder="(Email) qwerty@gmail.com" required>
+                            <textarea rows="5" placeholder="Сообщение.."></textarea>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>Отправить
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -66,21 +518,44 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Klukva Games. Все права защищены.</p>
+            <p>&copy; 2026 Klukva Games. Все права защищены.</p>
             <div class="social">
-                <a href="#"><i class="fab fa-vk"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
+       
         const menuBtn = document.querySelector('.mobile-menu');
         const navUl = document.querySelector('nav ul');
-        menuBtn.addEventListener('click', () => {
-            navUl.classList.toggle('show');
-        });
+        
+        if (menuBtn && navUl) {
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navUl.classList.toggle('show');
+            });
+
+           
+            navUl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navUl.classList.remove('show');
+                });
+            });
+
+            
+            document.addEventListener('click', (e) => {
+                if (!navUl.contains(e.target) && !menuBtn.contains(e.target)) {
+                    navUl.classList.remove('show');
+                }
+            });
+        }
+
+      
     </script>
 </body>
 </html>

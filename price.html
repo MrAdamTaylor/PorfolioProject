@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klukva Games | Цены</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo"><i class="fas fa-gamepad"></i> Klukva Games</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="price.html" class="active">Price</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="pricing" style="padding: 80px 0;">
+            <div class="container">
+                <h1 class="section-title">Услуги по разработке игр под ключ</h1>
+                <p class="section-subtitle">Выберите подходящий пакет услуг и запустите свой игровой проект</p>
+                <div class="portfolio-grid">
+                    <div class="game-card"><div class="card-img" style="background: linear-gradient(135deg, #1e1a2f, #2a1e3c);"><i class="fas fa-crosshairs"></i></div><div class="card-content"><h3>Базовый пакет разработки</h3><div class="price">499 000 ₽</div><p>Разработка простой 2D‑игры, базовый дизайн, публикация в Steam</p><a href="#" class="btn btn-primary">Заказать</a></div></div>
+                    <div class="game-card"><div class="card-img" style="background: linear-gradient(135deg, #0f2b2d, #1a3a3a);"><i class="fas fa-city"></i></div><div class="card-content"><h3>Расширенный пакет</h3><div class="price">799 000 ₽</div><p>Разработка 3D‑игры средней сложности, мультиплеер до 8 игроков</p><a href="#" class="btn btn-primary">Заказать</a></div></div>
+                    <div class="game-card"><div class="card-img" style="background: linear-gradient(135deg, #0a0f2a, #161c3f);"><i class="fas fa-space-shuttle"></i></div><div class="card-content"><h3>Пакет для космических симуляторов</h3><div class="price">599 000 ₽</div><p>5 уникальных миссий, кастомизация кораблей</p><a href="#" class="btn btn-primary">Заказать</a></div></div>
+                    <div class="game-card"><div class="card-img" style="background: linear-gradient(135deg, #2c1a1a, #3d2626);"><i class="fas fa-rocket"></i></div><div class="card-content"><h3>Пакет для симуляторов и обучения</h3><div class="price">399 000 ₽</div><p>Базовый симулятор, 10 сценариев, интеграция обучения</p><a href="#" class="btn btn-primary">Заказать</a></div></div>
+                    <div class="game-card"><div class="card-img" style="background: linear-gradient(135deg, #1f3b2c, #2a4a38);"><i class="fas fa-dragon"></i></div><div class="card-content"><h3>Пакет для RPG‑игр</h3><div class="price">699 000 ₽</div><p>Полноценная RPG‑кампания, процедурная генерация мира</p><a href="#" class="btn btn-primary">Заказать</a></div></div>
+                    <div class="game-card"><div class="card-img" style="background: linear-gradient(135deg, #1a1f3a, #252b4a);"><i class="fas fa-map"></i></div><div class="card-content"><h3>Пакет для приключенческих игр</h3><div class="price">549 000 ₽</div><p>Выживание, крафт, уникальная карта мира</p><a href="#" class="btn btn-primary">Заказать</a></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Klukva Games. Все права защищены.</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.querySelector('.mobile-menu');
+        const navUl = document.querySelector('nav ul');
+        menuBtn.addEventListener('click', () => { navUl.classList.toggle('show'); });
+    </script>
+</body>
+</html>

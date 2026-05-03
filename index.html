@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klukva Games | Разработка игр</title>
+    <title>Klukva Games | Геймдев нового поколения</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <header id="main-header">
         <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-gamepad"></i> Klukva Games
-            </div>
+            <div class="logo">Klukva<span>.</span>Games</div>
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="price.html">Price</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu">
@@ -32,37 +35,40 @@
         <section id="hero">
             <div class="container hero-grid">
                 <div class="hero-content">
-                    <h1>Мы создаём <span>игры,</span><br>в которые хочется играть снова</h1>
-                    <p>Klukva Games — команда энтузиастов, объединённых любовью к геймдеву. От шутеров до RPG — мы воплощаем смелые идеи в пикселях и коде.</p>
-                    <div class="hero-buttons">
-                        <a href="portfolio.html" class="btn btn-primary">Наши проекты</a>
-                        <a href="contact.html" class="btn btn-secondary">Связаться</a>
+                    <h1 class="reveal active">Создаем <span>будущее</span> в каждом пикселе</h1>
+                    <p class="reveal active" style="transition-delay: 0.2s;">
+                        Klukva Games — это сплав инновационных технологий и безудержной фантазии. Мы создаем миры, в которых вы захотите остаться навсегда.
+                    </p>
+                    <div class="btn-group reveal active" style="transition-delay: 0.4s;">
+                        <a href="#games" class="btn btn-primary">Посмотреть проекты</a>
+                        <a href="#" class="btn btn-secondary">Узнать больше</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <i class="fas fa-cubes"></i>
+                <div class="hero-image reveal active" style="transition-delay: 0.6s;">
+                    <i class="fas fa-rocket" style="font-size: 15rem; color: var(--dark); opacity: 0.05;"></i>
                 </div>
             </div>
         </section>
 
-        <section id="features">
+        <section id="games">
             <div class="container">
-                <h2>Почему выбирают нас</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <i class="fas fa-rocket"></i>
-                        <h3>Инновации</h3>
-                        <p>Используем современные движки и архитектуры (ECS, DOTS).</p>
+                <div class="section-header reveal">
+                    <h2>Наши последние релизы</h2>
+                </div>
+                <div class="games-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                    <div class="game-card reveal">
+                        <div class="card-img" style="background: #150734;"><i class="fas fa-gamepad"></i></div>
+                        <div class="card-content">
+                            <h3>Project: Neon Drift</h3>
+                            <p>Ультра-динамичный экшен в мире киберпанка.</p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Команда профи</h3>
-                        <p>Программисты, художники и дизайнеры с опытом от 5 лет.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-heart"></i>
-                        <h3>Любовь к деталям</h3>
-                        <p>Прорабатываем геймплей до мельчайших нюансов.</p>
+                    <div class="game-card reveal" style="transition-delay: 0.2s;">
+                        <div class="card-img" style="background: #150734;"><i class="fas fa-puzzle-piece"></i></div>
+                        <div class="card-content">
+                            <h3>The Silent Code</h3>
+                            <p>Головоломка, где ваш главный враг — время.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,12 +87,60 @@
     </footer>
 
     <script>
-        // Мобильное меню (простое переключение)
+        // Мобильное меню
         const menuBtn = document.querySelector('.mobile-menu');
         const navUl = document.querySelector('nav ul');
         menuBtn.addEventListener('click', () => {
             navUl.classList.toggle('show');
         });
+
+        // Эффект появления при скролле
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Скролл хедера
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Canvas фон
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            dots = [];
+            for (let i = 0; i < 50; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 3 + 1,
+                    speed: Math.random() * 0.5 + 0.2
+                });
+            }
+        }
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#FFA500';
+            dots.forEach(dot => {
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+                ctx.fill();
+                dot.y -= dot.speed;
+                if (dot.y < -10) dot.y = canvas.height + 10;
+            });
+            requestAnimationFrame(draw);
+        }
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        draw();
     </script>
 </body>
 </html>

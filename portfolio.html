@@ -283,6 +283,35 @@
             }
         }
 
+        @media (max-width: 375px) {
+            .container { padding: 0 15px; }
+            .section-title { font-size: 1.0rem; }
+            .mobile-menu { display: block; }
+            nav ul {
+                position: absolute;
+                top: 50px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 12, 30, 0.96);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                padding: 1.5rem;
+                gap: 1.2rem;
+                transform: translateY(-200%);
+                transition: 0.3s;
+                z-index: 150;
+                border-radius: 0 0 25px 25px;
+                border-bottom: 2px solid #ffb347;
+            }
+            nav ul.show {
+                transform: translateY(0);
+            }
+            footer .container {
+                flex-direction: column;
+            }
+        }
+
         /* декоративные блестки */
         @keyframes twinkle {
             0% { opacity: 0; }

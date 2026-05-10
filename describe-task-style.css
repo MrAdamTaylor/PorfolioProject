@@ -1,0 +1,88 @@
+/* ========== Стили для модального окна и интерактивных навыков ========== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #150734;
+    border-radius: 28px;
+    max-width: 500px;
+    width: 90%;
+    padding: 2rem;
+    border: 1px solid #FFA500;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+    animation: fadeInUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,165,0,0.4);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.2rem;
+}
+
+.modal-header h3 {
+    color: #FFA500;
+    font-size: 1.4rem;
+}
+
+.close-modal {
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.2s;
+}
+
+.close-modal:hover {
+    color: #FFA500;
+}
+
+.modal-body p {
+    margin-bottom: 0.8rem;
+    color: #ccc;
+}
+
+.modal-body ul {
+    margin-left: 1.2rem;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.modal-body li {
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Интерактивность для навыков */
+.skill-item {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.skill-item:hover {
+    opacity: 0.9;
+    transform: translateX(4px);
+}

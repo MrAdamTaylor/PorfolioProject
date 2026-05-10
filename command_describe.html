@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="describe-task-style.css">
 </head>
 <body>
     <header>
@@ -16,12 +17,12 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="price.html">Price</a></li>
                     <li><a href="reviews.html">Reviews</a></li>
-                    <li><a href="price.html">Reviews</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu">
@@ -37,7 +38,7 @@
                 <p class="section-subtitle">Люди, которые создают уникальные игровые миры</p>
 
                 <div class="team-grid">
-                    <!-- 1. Алексей Соколов (Геймдизайнер) – ваши навыки -->
+                    <!-- 1. Алексей Соколов (Геймдизайнер) -->
                     <div class="team-card">
                         <div class="team-left">
                             <div class="team-avatar"><i class="fas fa-user-astronaut"></i></div>
@@ -51,14 +52,26 @@
                                 <h4>Навыки Величайшего</h4>
                                 <div class="skills-sub">Геймдизайнер & Основатель</div>
                             </div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Game documentation & design docs</span><span class="skill-percent">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Narrative & script writing</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Prototyping</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">2D/3D basic art for grayboxing</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+                            <div class="skill-item" data-member="Алексей Соколов" data-skill="Game documentation & design docs" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Game documentation & design docs</span><span class="skill-percent">70%</span></div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Алексей Соколов" data-skill="Narrative & script writing" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Narrative & script writing</span><span class="skill-percent">90%</span></div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Алексей Соколов" data-skill="Prototyping" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Prototyping</span><span class="skill-percent">80%</span></div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Алексей Соколов" data-skill="2D/3D basic art for grayboxing" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">2D/3D basic art for grayboxing</span><span class="skill-percent">90%</span></div>
+                                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 2. Мария Волкова (Художник) -->
+                    <!-- 2. Мария Волкова -->
                     <div class="team-card">
                         <div class="team-left">
                             <div class="team-avatar"><i class="fas fa-palette"></i></div>
@@ -69,14 +82,22 @@
                         </div>
                         <div class="team-right">
                             <div class="skills-header"><h4>Навыки Величайшего</h4><div class="skills-sub">Ведущий художник</div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Concept art</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Pixel art animation</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Color theory & lighting</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Environment design</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                            <div class="skill-item" data-member="Мария Волкова" data-skill="Concept art" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Concept art</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Мария Волкова" data-skill="Pixel art animation" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Pixel art animation</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Мария Волкова" data-skill="Color theory & lighting" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Color theory & lighting</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Мария Волкова" data-skill="Environment design" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Environment design</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 3. Дмитрий Клюев (Программист) -->
+                    <!-- 3. Дмитрий Клюев -->
                     <div class="team-card">
                         <div class="team-left">
                             <div class="team-avatar"><i class="fas fa-code"></i></div>
@@ -87,14 +108,22 @@
                         </div>
                         <div class="team-right">
                             <div class="skills-header"><h4>Навыки Величайшего</h4><div class="skills-sub">Tech Lead / Программист</div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">C# / Unity optimization</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">ECS architecture</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Debugging & profiling</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Game physics</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+                            <div class="skill-item" data-member="Дмитрий Клюев" data-skill="C# / Unity optimization" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">C# / Unity optimization</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Дмитрий Клюев" data-skill="ECS architecture" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">ECS architecture</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Дмитрий Клюев" data-skill="Debugging & profiling" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Debugging & profiling</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Дмитрий Клюев" data-skill="Game physics" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Game physics</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 4. Анна Морозова (Саунд-дизайнер) -->
+                    <!-- 4. Анна Морозова -->
                     <div class="team-card">
                         <div class="team-left">
                             <div class="team-avatar"><i class="fas fa-head-side-vr"></i></div>
@@ -105,14 +134,22 @@
                         </div>
                         <div class="team-right">
                             <div class="skills-header"><h4>Навыки Величайшего</h4><div class="skills-sub">Саунд-дизайнер</div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Sound design (SFX)</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Music composition</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Foley & recording</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Audio middleware (FMOD/Wwise)</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+                            <div class="skill-item" data-member="Анна Морозова" data-skill="Sound design (SFX)" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Sound design (SFX)</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Анна Морозова" data-skill="Music composition" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Music composition</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Анна Морозова" data-skill="Foley & recording" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Foley & recording</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Анна Морозова" data-skill="Audio middleware (FMOD/Wwise)" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Audio middleware (FMOD/Wwise)</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 5. Игорь Петров (Продюсер) -->
+                    <!-- 5. Игорь Петров -->
                     <div class="team-card">
                         <div class="team-left">
                             <div class="team-avatar"><i class="fas fa-chart-line"></i></div>
@@ -123,14 +160,22 @@
                         </div>
                         <div class="team-right">
                             <div class="skills-header"><h4>Навыки Величайшего</h4><div class="skills-sub">Продюсер & Маркетолог</div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Project management</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Marketing & PR</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Analytics & KPIs</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Publishing (Steam)</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+                            <div class="skill-item" data-member="Игорь Петров" data-skill="Project management" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Project management</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Игорь Петров" data-skill="Marketing & PR" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Marketing & PR</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Игорь Петров" data-skill="Analytics & KPIs" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Analytics & KPIs</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:75%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Игорь Петров" data-skill="Publishing (Steam)" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Publishing (Steam)</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 6. Елена Кравцова (UI/UX) -->
+                    <!-- 6. Елена Кравцова -->
                     <div class="team-card">
                         <div class="team-left">
                             <div class="team-avatar"><i class="fas fa-mobile-alt"></i></div>
@@ -141,10 +186,18 @@
                         </div>
                         <div class="team-right">
                             <div class="skills-header"><h4>Навыки Величайшего</h4><div class="skills-sub">UI/UX дизайнер</div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">User research & testing</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Figma / Adobe XD</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Interactive prototyping</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-                            <div class="skill-item"><div class="skill-info"><span class="skill-name">Mobile adaptation</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+                            <div class="skill-item" data-member="Елена Кравцова" data-skill="User research & testing" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">User research & testing</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Елена Кравцова" data-skill="Figma / Adobe XD" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Figma / Adobe XD</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Елена Кравцова" data-skill="Interactive prototyping" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Interactive prototyping</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+                            </div>
+                            <div class="skill-item" data-member="Елена Кравцова" data-skill="Mobile adaptation" title="Просмотреть задачи">
+                                <div class="skill-info"><span class="skill-name">Mobile adaptation</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,14 +216,22 @@
         </div>
     </footer>
 
-    <script>
-        const menuBtn = document.querySelector('.mobile-menu');
-        const navUl = document.querySelector('nav ul');
-        if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                navUl.classList.toggle('show');
-            });
-        }
-    </script>
+    <!-- Модальное окно -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Задачи по навыку</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Участник:</strong> <span id="memberName"></span></p>
+                <p><strong>Навык:</strong> <span id="skillName"></span></p>
+                <p><strong>Выполненные задачи:</strong></p>
+                <ul id="tasksList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="describe-task-logic.js"></script>
 </body>
 </html>

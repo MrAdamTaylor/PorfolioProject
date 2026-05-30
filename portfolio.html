@@ -49,7 +49,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* внутренний контент с лёгким отступом от рамки */
         .wrapper {
             max-width: 1400px;
             margin: 0 auto;
@@ -66,7 +65,6 @@
             padding: 0 32px;
         }
 
-        /* хедер — стеклянный + цветной акцент */
         header {
             background: rgba(15, 20, 35, 0.7);
             backdrop-filter: blur(14px);
@@ -128,7 +126,6 @@
             color: #FFB347;
         }
 
-        /* секции */
         .section-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -159,7 +156,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* сетка с цветными карточками + эффекты */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -195,13 +191,114 @@
             position: relative;
             overflow: hidden;
         }
-        .card-img i {
-            filter: drop-shadow(0 0 12px rgba(0,0,0,0.6));
-            transition: 0.3s;
+
+        /* Оверлей для затемнения под иконкой */
+        .card-img .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
         }
-        .game-card:hover .card-img i {
-            transform: scale(1.1) rotate(4deg);
-            filter: drop-shadow(0 0 16px gold);
+
+        /* Иконка проекта */
+        .card-img .card-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            z-index: 2;
+            text-shadow: 0 0 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            filter: none;
+        }
+
+        .game-card:hover .card-img .card-icon {
+            transform: translate(-50%, -50%) scale(1.1) rotate(4deg);
+            text-shadow: 0 0 20px gold, 0 0 10px black;
+        }
+
+        /* Слайдер скриншотов */
+        .screenshots-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .slider-btn.prev {
+            left: 8px;
+        }
+
+        .slider-btn.next {
+            right: 8px;
+        }
+
+        .slider-btn:hover {
+            background: rgba(255, 215, 120, 0.8);
+            color: black;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .dot.active {
+            background: #FFB347;
+            box-shadow: 0 0 8px #FFB347;
         }
 
         .card-content {
@@ -222,7 +319,6 @@
             line-height: 1.4;
         }
 
-        /* футер с соцсетями */
         footer {
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(8px);
@@ -253,7 +349,6 @@
             transform: translateY(-3px);
         }
 
-        /* медиа-запросы */
         @media (max-width: 800px) {
             .container { padding: 0 20px; }
             .section-title { font-size: 2.5rem; }
@@ -281,11 +376,16 @@
             footer .container {
                 flex-direction: column;
             }
+            .slider-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 375px) {
             .container { padding: 0 15px; }
-            .section-title { font-size: 1.0rem; }
+            .section-title { font-size: 2rem; }
             .mobile-menu { display: block; }
             nav ul {
                 position: absolute;
@@ -310,18 +410,12 @@
             footer .container {
                 flex-direction: column;
             }
-        }
-
-        /* декоративные блестки */
-        @keyframes twinkle {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        .glow-text {
-            text-shadow: 0 0 6px #ffaa66;
-        }
-        button, .game-card {
-            transition: all 0.25s;
+            .card-img {
+                height: 160px;
+            }
+            .card-img .card-icon {
+                font-size: 3.5rem;
+            }
         }
     </style>
 </head>
@@ -339,8 +433,7 @@
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="reviews.html">Reviews</a></li>
-                    <li><a href="price.html">Reviews</a></li>
-
+                    <li><a href="price.html">Price</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu">
@@ -353,62 +446,115 @@
         <section id="portfolio">
             <div class="container">
                 <h1 class="section-title"><i class="fas fa-crown" style="color:#FFD966;"></i> Наши игры <i class="fas fa-crown" style="color:#FFD966;"></i></h1>
-                <p class="section-subtitle">✨ 6   проектов, в  которые   мы   вложили   душу ✨</p>
+                <p class="section-subtitle">✨ 6 проектов, в которые мы вложили душу ✨</p>
                 <div class="portfolio-grid">
-                    <!-- Карточка 1: Top-Down-Shooter  с агрессивным градиентом -->
+                    <!-- Карточка 1: Top-Down-Shooter -->
                     <div class="game-card">
                         <div class="card-img" style="background: radial-gradient(circle at 20% 30%, #ff4d6d, #3c096c);">
-                            <i class="fas fa-crosshairs" style="color:#fff2b5;"></i>
+                            <div class="screenshots-slider">
+                                <img src="src/Top-Down-Shooter-1.png" alt="Top-Down Shooter 1" class="slide active">
+                                <img src="src/Top-Down-Shooter-2.png" alt="Top-Down Shooter 2" class="slide">
+                                <img src="src/Top-Down-Shooter-3.png" alt="Top-Down Shooter 3" class="slide">
+                                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+                                <div class="slider-dots">
+                                    <span class="dot active" data-slide="0"></span>
+                                    <span class="dot" data-slide="1"></span>
+                                    <span class="dot" data-slide="2"></span>
+                                </div>
+                            </div>
+                            <div class="overlay"></div>
+                            <i class="fas fa-crosshairs card-icon" style="color:#fff2b5;"></i>
                         </div>
                         <div class="card-content">
                             <h3>🔫 Top-Down-Shooter</h3>
                             <p>Динамичный шутер с видом сверху. Уничтожай орды врагов, прокачивай оружие и сражайся с боссами в процедурно генерируемых подземельях. Ощути драйв!</p>
                         </div>
                     </div>
-                    <!-- Карточка 2: RTS — цвет стали и золота -->
+                    <!-- Карточка 2: RTS: Steel Conflict -->
                     <div class="game-card">
                         <div class="card-img" style="background: radial-gradient(circle at 70% 20%, #1f6d49, #0a2f2a);">
-                            <i class="fas fa-city" style="color:#ffd966;"></i>
+                            <div class="screenshots-slider">
+                                <img src="src/RTS-1.png" alt="RTS 1" class="slide active">
+                                <img src="src/RTS-2.png" alt="RTS 2" class="slide">
+                                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+                                <div class="slider-dots">
+                                    <span class="dot active" data-slide="0"></span>
+                                    <span class="dot" data-slide="1"></span>
+                                </div>
+                            </div>
+                            <div class="overlay"></div>
+                            <i class="fas fa-city card-icon" style="color:#ffd966;"></i>
                         </div>
                         <div class="card-content">
                             <h3>🏭 RTS: Steel Conflict</h3>
                             <p>Многопользовательская стратегия в реальном времени. Строй базу, создавай уникальных юнитов и сражайся с другими игроками по сети до 8 человек. Тактика решает всё!</p>
                         </div>
                     </div>
-                    <!-- Карточка 3: Ultra-Ship_Escape — космическое сияние -->
+                    <!-- Карточка 3: Ultra-Ship Escape -->
                     <div class="game-card">
                         <div class="card-img" style="background: radial-gradient(circle at 40% 70%, #00a6ff, #0b0f3a);">
-                            <i class="fas fa-space-shuttle" style="color:#ffe087;"></i>
+                            <div class="screenshots-slider">
+                                <img src="src/Ultra-Ship-1.png" alt="Ultra Ship 1" class="slide active">
+                                <img src="src/Ultra-Ship-2.png" alt="Ultra Ship 2" class="slide">
+                                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+                                <div class="slider-dots">
+                                    <span class="dot active" data-slide="0"></span>
+                                    <span class="dot" data-slide="1"></span>
+                                </div>
+                            </div>
+                            <div class="overlay"></div>
+                            <i class="fas fa-space-shuttle card-icon" style="color:#ffe087;"></i>
                         </div>
                         <div class="card-content">
                             <h3>🚀 Ultra-Ship Escape</h3>
                             <p>Космический экшен. Управляй мощным кораблём, уничтожай турели и вражеские истребители, уклоняйся от астероидов в захватывающих миссиях. Готов к гиперпрыжку?</p>
                         </div>
                     </div>
-                    <!-- Карточка 4: RocketLaunch — огненная -->
+                    <!-- Карточка 4: RocketLaunch -->
                     <div class="game-card">
                         <div class="card-img" style="background: radial-gradient(circle at 30% 50%, #c94f4f, #631a1a);">
-                            <i class="fas fa-rocket" style="color:#ffd966;"></i>
+                            <div class="screenshots-slider">
+                                <img src="src/Rocket-Platform-1.png" alt="Rocket 1" class="slide active">
+                                <img src="src/Rocket-Platform-2.png" alt="Rocket 2" class="slide">
+                                <img src="src/Rocket-Platform-3.png" alt="Rocket 3" class="slide">
+                                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+                                <div class="slider-dots">
+                                    <span class="dot active" data-slide="0"></span>
+                                    <span class="dot" data-slide="1"></span>
+                                    <span class="dot" data-slide="2"></span>
+                                </div>
+                            </div>
+                            <div class="overlay"></div>
+                            <i class="fas fa-rocket card-icon" style="color:#ffd966;"></i>
                         </div>
                         <div class="card-content">
                             <h3>🔥 RocketLaunch</h3>
                             <p>Симулятор запуска ракеты. Рассчитывай траекторию, управляй тягой и добейся выхода на орбиту Земли. Реалистичная физика, динамическая атмосфера и риск!</p>
                         </div>
                     </div>
-                    <!-- Карточка 5: 2D RPG — изумрудная глубина -->
+                    <!-- Карточка 5: 2D RPG: Echoes of ECS (без скриншотов) -->
                     <div class="game-card">
                         <div class="card-img" style="background: radial-gradient(circle at 80% 40%, #2b7a4b, #0e3822);">
-                            <i class="fas fa-dragon" style="color:#ffcf4a;"></i>
+                            <div class="overlay"></div>
+                            <i class="fas fa-dragon card-icon" style="color:#ffcf4a;"></i>
                         </div>
                         <div class="card-content">
                             <h3>🐉 2D RPG: Echoes of ECS</h3>
                             <p>Ролевая игра на ECS-архитектуре. Исследуй процедурный мир, сражайся с монстрами, развивай персонажа и открывай новые способности. Твоя эпопея начинается.</p>
                         </div>
                     </div>
-                    <!-- Карточка 6: Mystery Island — таинственная фиолетовая магия -->
+                    <!-- Карточка 6: Mystery Island (1 скриншот Defender.png) -->
                     <div class="game-card">
                         <div class="card-img" style="background: radial-gradient(circle at 50% 20%, #b86bff, #311b5a);">
-                            <i class="fas fa-map" style="color:#ffea9e;"></i>
+                            <div class="screenshots-slider">
+                                <img src="src/Defender.png" alt="Mystery Island Defender" class="slide active">
+                            </div>
+                            <div class="overlay"></div>
+                            <i class="fas fa-map card-icon" style="color:#ffea9e;"></i>
                         </div>
                         <div class="card-content">
                             <h3>🗺️ Mystery Island</h3>
@@ -442,7 +588,6 @@
                 e.stopPropagation();
                 navUl.classList.toggle('show');
             });
-            // Закрытие меню при клике на ссылку
             document.querySelectorAll('nav ul li a').forEach(link => {
                 link.addEventListener('click', () => {
                     navUl.classList.remove('show');
@@ -450,13 +595,7 @@
             });
         }
 
-        // Добавим случайные искорки на карточки при загрузке (просто для веселья)
-        const cards = document.querySelectorAll('.game-card');
-        cards.forEach((card, idx) => {
-            card.style.setProperty('transition-delay', `${idx * 0.03}s`);
-        });
-
-        // маленький эффект печати для субтитра
+        // Эффект печати для подзаголовка
         const subtitle = document.querySelector('.section-subtitle');
         if(subtitle && !subtitle.hasAttribute('data-typed')) {
             const originalText = subtitle.innerText;
@@ -472,7 +611,51 @@
             typeWriter();
             subtitle.setAttribute('data-typed', 'true');
         }
+
+        // Инициализация всех слайдеров
+        document.querySelectorAll('.screenshots-slider').forEach(slider => {
+            const slides = slider.querySelectorAll('.slide');
+            const dots = slider.querySelectorAll('.dot');
+            const prevBtn = slider.querySelector('.slider-btn.prev');
+            const nextBtn = slider.querySelector('.slider-btn.next');
+            let currentIndex = 0;
+            if (slides.length === 0) return;
+
+            function updateSlides() {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === currentIndex);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            prevBtn?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+                updateSlides();
+            });
+
+            nextBtn?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+                updateSlides();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const slideIndex = parseInt(dot.getAttribute('data-slide'));
+                    if (!isNaN(slideIndex) && slideIndex >= 0 && slideIndex < slides.length) {
+                        currentIndex = slideIndex;
+                        updateSlides();
+                    }
+                });
+            });
+
+            updateSlides();
+        });
     })();
 </script>
 </body>
-</html
+</html>
